@@ -1,0 +1,17 @@
+﻿@model TestApp.RegistrationEmployee.Web.ViewModels.CompanyViewModel
+
+
+<form asp-action="Create" asp-controller="Company" method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="form-group">
+        <label asp-for="Name" class="control-label">Name</label>
+        <input type="text" asp-for="Name" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="OrganizationalAndLegalForm" class="control-label">O&L Form</label>
+        <input type="text" asp-for="OrganizationalAndLegalForm" class="form-control" />
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Save" class="btn btn-outline-secondary" />
+    </div>
+</form>

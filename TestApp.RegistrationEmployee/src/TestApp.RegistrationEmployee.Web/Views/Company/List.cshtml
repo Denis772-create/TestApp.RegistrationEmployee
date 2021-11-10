@@ -1,0 +1,51 @@
+﻿@using System.Linq
+@using TestApp.RegistrationEmployee.Web.ViewModels
+@model IEnumerable<TestApp.RegistrationEmployee.Web.ViewModels.CompanyViewModel>
+
+
+<form asp-action="List" method="get">
+    <div class="form-inline form-group">
+        <label class="control-label">Name: </label>
+        <input name="name" class="form-control" />
+
+        <label class="control-label">Company: </label>
+        <select name="company" @**@ class="form-control"></select>
+
+        <input type="submit" value="Filter" class="btn btn-default" />
+    </div>
+</form>
+
+<div class="table-wrapper">
+    <table class="alt">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>O&L Form</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                int i = 1;
+                foreach (var company in Model)
+                {
+                    <tr>
+                        <td>@i</td>
+                        <td>@company.Name</td>
+                        <td>@company.OrganizationalAndLegalForm</td>
+                        <td>
+                            <ul class="actions small">
+                                <li><a asp-action="Edit" asp-route-id="@company.Name" class="button primary small">Edit</a></li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul class="actions small">
+                                <li><a asp-action="Delete" asp-route-id="@company.Name" class="button small">Delete</a></li>
+                            </ul>
+                        </td>
+                    </tr>
+                    i++;
+                }
+            }
+    </table>
+</div>

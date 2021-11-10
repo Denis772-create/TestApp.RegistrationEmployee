@@ -1,0 +1,58 @@
+﻿@using System.Linq
+@model IEnumerable<TestApp.RegistrationEmployee.Web.ViewModels.EmployeeViewModel>
+
+
+<form asp-action="List" method="get">
+    <div class="form-inline form-group">
+        <label class="control-label">Имя: </label>
+        <input name="name" class="form-control" />
+
+        <label class="control-label">Компания: </label>
+        <select name="company" asp-items="ViewBag.Companies" class="form-control"></select>
+
+        <input type="submit" value="Filter" class="btn btn-default" />
+    </div>
+</form>
+
+<div class="table-wrapper">
+    <table class="alt">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>FName</th>
+                <th>SName</th>
+                <th>LName</th>
+                <th>Emp-t Date</th>
+                <th>Position</th>
+                <th>Company</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                int i = 1;
+                foreach (var eml in Model)
+                {
+                    <tr>
+                        <td>@i</td>
+                        <th>@eml.FirstName</th>
+                        <th>@eml.SecondName</th>
+                        <th>@eml.LastName</th>
+                        <th>@eml.EmploymentDate</th>
+                        <th>@eml.Position</th>
+                        <th>@eml.Company</th>
+                        <th>
+                            <ul class="actions small">
+                                <li><a asp-action="Edit" asp-route-id="@eml.FirstName" class="button primary small">Edit</a></li>
+                            </ul>
+                        </th>
+                        <th>
+                            <ul class="actions small">
+                                <li><a asp-action="Delete" asp-route-id="@eml.FirstName" class="button small">Delete</a></li>
+                            </ul>
+                        </th>
+                    </tr>
+                    i++;
+                }
+            }
+    </table>
+</div>
